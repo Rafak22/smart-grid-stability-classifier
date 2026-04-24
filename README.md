@@ -255,23 +255,32 @@ If the success criteria are not achieved, the following steps will be taken in o
 
 ## Usage
 
-See the notebook `saudi_grid_stability_classifier.ipynb` for the complete implementation including data loading, feature engineering, model training, evaluation, and dashboard visualization.
-
-### Setup
-
+### Run the Gradio App (Hosted Demo)
 ```bash
 pip install -r requirements.txt
-jupyter notebook saudi_grid_stability_classifier.ipynb
+python app.py
 ```
+Gradio will print a public URL ([e.g. https://abc123.gradio.live](https://6ea03ef8120a84c8ea.gradio.live)) — share this link for the live demo.
 
-### Running the API
-
+### Run the API
 ```bash
 uvicorn api:app --reload
 ```
+Open http://localhost:8000/docs for interactive API documentation.
 
-### Running the Gradio App
-
+### Run with Docker
 ```bash
-python app.py
+docker build -t grid-stability .
+docker run -p 8000:8000 grid-stability
+```
+
+### Example API Request
+```bash
+curl -X POST "http://localhost:8000/predict" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "tau1": 2.959, "tau2": 3.079, "tau3": 8.381, "tau4": 9.780,
+    "p1": 3.763, "p2": -0.782, "p3": -1.257, "p4": -1.723,
+    "g1": 0.650, "g2": 0.859, "g3": 0.887, "g4": 0.958
+  }'
 ```

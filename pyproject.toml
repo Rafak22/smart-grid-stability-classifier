@@ -1,0 +1,30 @@
+[project]
+name = "smart-grid-stability-classifier"
+version = "1.0.0"
+description = "Predicting electrical grid stability using ML — XGBoost classifier on UCI DSGC dataset"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Rafa" }]
+
+dependencies = [
+    "fastapi==0.111.0",
+    "uvicorn==0.30.1",
+    "pydantic==2.7.1",
+    "numpy==1.26.4",
+    "scikit-learn==1.5.0",
+    "xgboost==2.0.3",
+    "gradio==4.36.1",
+    "pandas==2.2.2",
+]
+
+[project.scripts]
+serve-api = "uvicorn api:app --reload"
+serve-app = "python app.py"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["."]
