@@ -284,3 +284,6 @@ curl -X POST "http://localhost:8000/predict" \
     "g1": 0.650, "g2": 0.859, "g3": 0.887, "g4": 0.958
   }'
 ```
+
+## Presentation
+[View Project Slides](./smart_grid_updated_LAST.pptx)
